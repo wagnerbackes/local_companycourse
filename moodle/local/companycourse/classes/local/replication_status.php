@@ -18,7 +18,7 @@
  * Status values stored in local_companycourse_log.status.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * Allowed replication outcome statuses.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class replication_status {

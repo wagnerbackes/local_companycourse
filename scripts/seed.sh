@@ -107,10 +107,10 @@ if [[ "$FORCE" -eq 1 && "${EXISTING_COUNT:-0}" -gt 0 ]]; then
 fi
 
 echo "==> Ativando modo developer no Moodle..."
-docker compose exec -T web php admin/cli/cfg.php --name=debug --set=32767
-docker compose exec -T web php admin/cli/cfg.php --name=debugdisplay --set=1
+docker compose exec -T -u www-data web php admin/cli/cfg.php --name=debug --set=32767
+docker compose exec -T -u www-data web php admin/cli/cfg.php --name=debugdisplay --set=1
 
-DEBUG_VALUE="$(docker compose exec -T web php admin/cli/cfg.php --name=debug --no-eol 2>/dev/null | tr -d '\r' || true)"
+DEBUG_VALUE="$(docker compose exec -T -u www-data web php admin/cli/cfg.php --name=debug --no-eol 2>/dev/null | tr -d '\r' || true)"
 if [[ "${DEBUG_VALUE:-0}" -lt 32767 ]]; then
   echo "Falha ao ativar debug developer (valor atual: ${DEBUG_VALUE:-vazio})." >&2
   exit 1
@@ -124,7 +124,7 @@ fi
 
 echo "==> Gerando site de teste IOMAD (tool_iomadsite, size=${SIZE^^})..."
 echo "    Aviso: ferramenta de desenvolvimento; não usar em produção."
-docker compose exec -T web php "${CLI_ARGS[@]}"
+docker compose exec -T -u www-data web php "${CLI_ARGS[@]}"
 
 echo ""
 echo "==> Seed IOMAD concluído."

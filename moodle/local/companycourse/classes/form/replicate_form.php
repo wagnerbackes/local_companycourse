@@ -18,7 +18,7 @@
  * Replication administration form.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -33,7 +33,7 @@ require_once($CFG->libdir . '/formslib.php');
  * Moodle form to select base course, companies and optional user data.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class replicate_form extends \moodleform {

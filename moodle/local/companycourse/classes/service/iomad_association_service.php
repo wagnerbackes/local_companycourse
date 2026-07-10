@@ -18,7 +18,7 @@
  * IOMAD company association after course restore.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -32,7 +32,7 @@ use local_companycourse\exception\replication_exception;
  * Resolves company category, detects duplicates and calls company::add_course().
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class iomad_association_service {

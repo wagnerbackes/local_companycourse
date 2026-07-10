@@ -18,7 +18,7 @@
  * Plugin renderer.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * Renderer for local_companycourse templates.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class renderer extends \plugin_renderer_base {

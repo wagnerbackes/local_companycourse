@@ -7,6 +7,10 @@ cd "$ROOT"
 IOMAD_BRANCH="${IOMAD_BRANCH:-IOMAD_500_STABLE}"
 IOMAD_REPO="${IOMAD_REPO:-https://github.com/iomad/iomad.git}"
 PLUGIN_DIR="moodle/local/companycourse"
+WEB_USER="www-data"
+WEB_GROUP="www-data"
+MOODLEDATA_HOST="${ROOT}/moodledata"
+MOODLEDATA_CONTAINER="/var/www/moodledata"
 
 die() {
   echo "Erro: $*" >&2
@@ -15,6 +19,43 @@ die() {
 
 require_cmd() {
   command -v "$1" >/dev/null 2>&1 || die "'$1' não encontrado. Instale-o antes de continuar."
+}
+
+fix_moodledata_permissions() {
+  echo "==> Ajustando permissões de pastas..."
+
+  mkdir -p "$MOODLEDATA_HOST"
+  chmod 777 "$MOODLEDATA_HOST" 2>/dev/null || true
+
+  if ! docker compose ps --status running --services 2>/dev/null | grep -qx web; then
+    echo "    Container web ainda não está no ar; permissões finais serão aplicadas depois."
+    return 0
+  fi
+
+  docker compose exec -T -u root web bash -c "
+    set -e
+    mkdir -p '${MOODLEDATA_CONTAINER}'/{cache,localcache,temp,filedir,sessions,trashdir,lang,muc}
+    chown -R ${WEB_USER}:${WEB_GROUP} '${MOODLEDATA_CONTAINER}'
+    find '${MOODLEDATA_CONTAINER}' -type d -exec chmod 2777 {} +
+    find '${MOODLEDATA_CONTAINER}' -type f -exec chmod 0666 {} +
+    if [[ ! -f '${MOODLEDATA_CONTAINER}/.htaccess' ]]; then
+      printf '%s\n' 'order deny,allow' 'deny from all' 'AllowOverride None' > '${MOODLEDATA_CONTAINER}/.htaccess'
+      chown ${WEB_USER}:${WEB_GROUP} '${MOODLEDATA_CONTAINER}/.htaccess'
+      chmod 0666 '${MOODLEDATA_CONTAINER}/.htaccess'
+    fi
+  "
+
+  docker compose exec -T -u "${WEB_USER}" web bash -c "
+    set -e
+    test -w '${MOODLEDATA_CONTAINER}'
+    touch '${MOODLEDATA_CONTAINER}/.write_test' && rm -f '${MOODLEDATA_CONTAINER}/.write_test'
+  " || die "moodledata não está gravável por ${WEB_USER}."
+
+  echo "    moodledata → ${WEB_USER}:${WEB_GROUP} (dirs 2777, files 0666)"
+}
+
+run_moodle_cli() {
+  docker compose exec -T -u "${WEB_USER}" web php "$@"
 }
 
 echo "==> Instalação completa — Moodle 5 / IOMAD 5 / local_companycourse"
@@ -30,7 +71,7 @@ docker info >/dev/null 2>&1 || die "Docker daemon inacessível. Inicie o Docker 
 [[ -f .env.example ]] || die ".env.example não encontrado."
 [[ -f docker/config.php ]] || die "docker/config.php não encontrado."
 [[ -f scripts/seed.sh ]] || die "scripts/seed.sh não encontrado."
-chmod +x scripts/seed.sh
+chmod +x setup.sh scripts/seed.sh
 [[ -d "$PLUGIN_DIR" && -f "$PLUGIN_DIR/version.php" ]] || die "Plugin $PLUGIN_DIR ausente. O repositório deve incluir moodle/local/companycourse/."
 
 if [[ ! -f .env ]]; then
@@ -76,8 +117,7 @@ else
   echo "    moodle/config.php já existe"
 fi
 
-mkdir -p moodledata
-chmod -R 777 moodledata || true
+fix_moodledata_permissions
 
 echo "==> Subindo containers (docker compose up -d)..."
 docker compose up -d
@@ -93,16 +133,14 @@ for _ in $(seq 1 60); do
 done
 [[ "$db_ready" -eq 1 ]] || die "Banco não ficou pronto a tempo."
 
-echo "==> Ajustando permissões do moodledata..."
-docker compose exec -T -u root web chown -R www-data:www-data /var/www/moodledata || true
-docker compose exec -T -u root web chmod -R 777 /var/www/moodledata || true
+fix_moodledata_permissions
 
 TABLE_EXISTS="$(docker compose exec -T db mariadb -umoodle -pmoodle moodle -N -e "SHOW TABLES LIKE 'mdl_config';" 2>/dev/null | tr -d '\r' || true)"
 if [[ "$TABLE_EXISTS" == "mdl_config" ]]; then
   echo "==> Moodle já instalado."
 else
   echo "==> Instalando banco Moodle/IOMAD (CLI)..."
-  docker compose exec -T web php admin/cli/install_database.php \
+  run_moodle_cli admin/cli/install_database.php \
     --lang=pt_br \
     --adminuser=admin \
     --adminpass=Admin123! \
@@ -112,10 +150,14 @@ else
 fi
 
 echo "==> Aplicando upgrades / instalando plugins pendentes..."
-docker compose exec -T web php admin/cli/upgrade.php --non-interactive
+run_moodle_cli admin/cli/upgrade.php --non-interactive
+
+fix_moodledata_permissions
 
 echo "==> Seed IOMAD (tool_iomadsite)..."
 ./scripts/seed.sh
+
+fix_moodledata_permissions
 
 echo ""
 echo "Ambiente pronto."

@@ -18,7 +18,7 @@
  * Domain exception for course replication failures.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * Controlled failure during validation, replication or IOMAD association.
  *
  * @package    local_companycourse
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class replication_exception extends \moodle_exception {

@@ -2,7 +2,12 @@
 
 Plugin local Moodle 5 / IOMAD 5 para replicar um curso base para uma ou mais Companies via Backup/Restore nativo.
 
-Versão atual: `2026070914` / release `0.6.2` (`MATURITY_BETA`).
+| Item | Valor |
+|------|--------|
+| Autor | Wagner Dos Santos Backes |
+| E-mail | wagnerbackes@gmail.com |
+| Versão | `2026070914` / release `0.6.2` (`MATURITY_BETA`) |
+| Documentação de entrega | [docs/entrega.md](docs/entrega.md) |
 
 ## Instalação
 
@@ -69,8 +74,6 @@ Cobertura: capability, schema XMLDB, privacy (metadata/export/delete da tabela d
 | Privacy | Provider completo da tabela `local_companycourse_log` (metadata, export e delete) |
 | Maturity | `MATURITY_BETA` |
 
-Detalhes: [docs/tasks/05–10](../../../docs/tasks/00-indice.md) e [12-documentacao-entregaveis.md](../../../docs/tasks/12-documentacao-entregaveis.md).
-
 ## Roteiro de teste manual
 
 1. `./setup.sh` ou `docker compose up -d` → http://localhost:8088 login admin (`admin` / `Admin123!`).
@@ -82,14 +85,11 @@ Detalhes: [docs/tasks/05–10](../../../docs/tasks/00-indice.md) e [12-documenta
 7. Usuário sem capability → acesso negado.
 8. (Opcional) PHPUnit: suíte `local_companycourse_testsuite` — 37 testes OK.
 
-## Links
+## Ambiente Docker
 
-| Documento | Caminho |
-|-----------|---------|
-| Enunciado | [docs/Task.md](../../../docs/Task.md) |
-| Índice das tasks | [docs/tasks/00-indice.md](../../../docs/tasks/00-indice.md) |
-| Entrega final | [docs/tasks/12-documentacao-entregaveis.md](../../../docs/tasks/12-documentacao-entregaveis.md) |
-| Ambiente Docker | [README.md](../../../README.md) (raiz) |
+Instruções de subida do stack: [README.md](../../../README.md) (raiz do repositório).
+
+Documentação de entrega (decisões, roteiro e prints): [docs/entrega.md](docs/entrega.md).
 
 ## Estrutura
 
@@ -99,6 +99,9 @@ local/companycourse/
 ├── settings.php
 ├── index.php
 ├── history.php
+├── docs/
+│   ├── entrega.md
+│   └── prints/
 ├── lang/en/local_companycourse.php
 ├── lang/pt_br/local_companycourse.php
 ├── db/
@@ -144,8 +147,8 @@ local/companycourse/
 
 Orquestrador: `replication_manager::replicate($courseid, $companyids, $userid, $includeusers = false)`.
 
-Replicação: sync `MODE_GENERAL` + `display_if_slow` (1 backup + N restores). Usuários opcionais, default off — [task 08](../../../docs/tasks/08-pagina-administrativa.md).
+Replicação: sync `MODE_GENERAL` + `display_if_slow` (1 backup + N restores). Usuários opcionais, default off.
 
-Association IOMAD: [task 07](../../../docs/tasks/07-organizacao-empresa-iomad.md).
+Associação IOMAD: `company::add_course()` com `shared=0`, categoria da company e rollback se a associação falhar.
 
-Tabela XMLDB: `local_companycourse_log` — [task 04](../../../docs/tasks/04-banco-xmldb-logs.md).
+Tabela XMLDB: `local_companycourse_log`.

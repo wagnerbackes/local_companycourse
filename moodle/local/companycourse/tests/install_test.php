@@ -21,7 +21,7 @@ namespace local_companycourse;
  *
  * @package    local_companycourse
  * @category   test
- * @copyright  2026 Inicie
+ * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversNothing
  */
