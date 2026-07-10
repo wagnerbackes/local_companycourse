@@ -18,7 +18,7 @@
  * Privacy subsystem implementation for local_companycourse.
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -39,7 +39,7 @@ use context_system;
  * Privacy provider for replication operation logs.
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements

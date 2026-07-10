@@ -6,8 +6,9 @@ Plugin local Moodle 5 / IOMAD 5 para replicar um curso base para uma ou mais Com
 |------|--------|
 | Autor | Wagner Dos Santos Backes |
 | E-mail | wagnerbackes@gmail.com |
-| Versão | `2026070914` / release `0.6.2` (`MATURITY_BETA`) |
+| Versão | `2026070974` / release `0.6.2` (`MATURITY_BETA`) |
 | Documentação de entrega | [docs/entrega.md](docs/entrega.md) |
+| Evidências (prints) | [docs/prints/](docs/prints/) |
 
 ## Instalação
 
@@ -17,25 +18,25 @@ Com o ambiente Docker no ar:
 2. Acesse **Administração do site → Notificações** ou execute:
 
 ```bash
-docker compose exec -T web php admin/cli/upgrade.php --non-interactive
+docker compose exec -T -u www-data web php admin/cli/upgrade.php --non-interactive
 ```
 
-## Acesso
+Confirme em **Plugins → Visão geral dos plugins** (`Screenshot_1`).
 
-- **Administração do site (Plugins locais):** Plugins locais → Replicação de cursos para empresas → *Replicar cursos para empresas*  
-  URL: `/local/companycourse/index.php` (nó `local_companycourse_manage`)
-- **Administração do site (Cursos):** Administração do site → Cursos → *Replicar cursos para empresas*  
-  URL: `/local/companycourse/index.php` (nó `local_companycourse_manage_courses`)
-- **Histórico (Plugins locais):** Plugins locais → … → *Histórico*  
-  URL: `/local/companycourse/history.php` (nó `local_companycourse_history`)
-- **Histórico (Relatórios):** Administração do site → Relatórios → *Histórico*  
-  URL: `/local/companycourse/history.php` (nó `local_companycourse_history_reports`)
-- **Painel IOMAD (Cursos):** ícone na aba Courses (via `db/iomadmenu.php`, chave `companycoursereplicate`)  
-  URL: `/local/companycourse/index.php?dashboard=1`
-- **Painel IOMAD (Reports):** ícone na aba Reports (chave `companycoursehistory`, estilo report)  
-  URL: `/local/companycourse/history.php?dashboard=1` — layout `base` + `templates/history_page.mustache`
+## Acesso e uso
 
 Capability: `local/companycourse:manage`.
+
+| Entrada | URL | Print |
+|---------|-----|-------|
+| Admin → Cursos | `/local/companycourse/index.php` | `Screenshot_4` |
+| Formulário | mesma URL | `Screenshot_5`–`7` |
+| Resumo do lote | após executar | `Screenshot_8` |
+| Admin → Relatórios → Histórico | `/local/companycourse/history.php` | `Screenshot_9`–`10` |
+| IOMAD → Courses | `?dashboard=1` | `Screenshot_11` |
+| IOMAD → Reports | `history.php?dashboard=1` | `Screenshot_12` |
+
+Guia completo com imagens e descrição de cada tela: [docs/entrega.md](docs/entrega.md).
 
 ## Testes PHPUnit
 
@@ -89,8 +90,6 @@ Cobertura: capability, schema XMLDB, privacy (metadata/export/delete da tabela d
 
 Instruções de subida do stack: [README.md](../../../README.md) (raiz do repositório).
 
-Documentação de entrega (decisões, roteiro e prints): [docs/entrega.md](docs/entrega.md).
-
 ## Estrutura
 
 ```
@@ -101,7 +100,7 @@ local/companycourse/
 ├── history.php
 ├── docs/
 │   ├── entrega.md
-│   └── prints/
+│   └── prints/Screenshot_1.png … Screenshot_12.png
 ├── lang/en/local_companycourse.php
 ├── lang/pt_br/local_companycourse.php
 ├── db/

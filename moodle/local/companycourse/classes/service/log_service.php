@@ -18,7 +18,7 @@
  * Persistence for replication operation logs.
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -33,7 +33,7 @@ use local_companycourse\local\replication_status;
  * Writes and reads rows in local_companycourse_log.
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class log_service {

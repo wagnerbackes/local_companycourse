@@ -6,7 +6,7 @@ Ambiente Docker e plugin local para replicar um curso base para Companies IOMAD 
 |------|--------|
 | Autor | Wagner Dos Santos Backes |
 | E-mail | wagnerbackes@gmail.com |
-| Plugin | `local_companycourse` `2026070914` / `0.6.2` (`MATURITY_BETA`) |
+| Plugin | `local_companycourse` `2026070974` / `0.6.2` (`MATURITY_BETA`) |
 | Repositório | https://github.com/wagnerbackes/local_companycourse |
 
 ## Requisitos

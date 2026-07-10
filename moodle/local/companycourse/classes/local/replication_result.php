@@ -18,7 +18,7 @@
  * Outcome of replicating one base course to one company.
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * Per-company replication result consumed by UI and log service.
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class replication_result {

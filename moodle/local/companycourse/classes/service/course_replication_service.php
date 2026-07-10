@@ -18,7 +18,7 @@
  * Native Moodle backup/restore course replication.
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -40,7 +40,7 @@ require_once($CFG->dirroot . '/backup/util/includes/restore_includes.php');
  * Copies a course via Moodle Backup/Restore API.
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class course_replication_service {

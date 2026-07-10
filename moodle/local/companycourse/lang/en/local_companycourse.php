@@ -18,7 +18,7 @@
  * Language strings for local_companycourse (English).
  *
  * @package    local_companycourse
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

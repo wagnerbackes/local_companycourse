@@ -2,7 +2,7 @@
 
 | Documento | Conteúdo |
 |-----------|----------|
-| [entrega.md](entrega.md) | Documentação de entrega: decisões técnicas, instalação, roteiro de teste e evidências |
-| [prints/](prints/) | Capturas de tela das páginas do plugin |
+| [entrega.md](entrega.md) | Entrega: instalação, uso passo a passo, decisões técnicas e evidências |
+| [prints/](prints/) | Capturas de tela (`Screenshot_1.png` … `Screenshot_12.png`) |
 
 **Autor:** Wagner Dos Santos Backes — wagnerbackes@gmail.com

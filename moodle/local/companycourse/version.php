@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_companycourse';
-$plugin->version   = 2026070914;
+$plugin->version   = 2026070974;
 $plugin->requires  = 2025041400;
 $plugin->supported = [500, 500];
 $plugin->maturity  = MATURITY_BETA;

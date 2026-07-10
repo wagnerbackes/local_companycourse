@@ -23,7 +23,7 @@ defined('MOODLE_INTERNAL') || die();
  *
  * @package    local_companycourse
  * @category   test
- * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
+ * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers \local_companycourse\form\replicate_form
  */
