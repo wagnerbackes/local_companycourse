@@ -1,0 +1,50 @@
+{{!
+    @template local_companycourse/dashboard_page
+
+    IOMAD dashboard shell for course replication (Bootstrap utilities only).
+
+    Context:
+    * title - page title
+    * intro - intro text
+    * counts - optional counts line
+    * formhtml - rendered moodleform HTML
+    * summaryhtml - optional summary HTML
+    * historyurl - link to history
+    * dashboardurl - back to IOMAD dashboard
+}}
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12">
+            <a class="btn btn-secondary" href="{{{dashboardurl}}}">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                {{#str}}backtodashboard, local_companycourse{{/str}}
+            </a>
+            <a class="btn btn-link" href="{{{historyurl}}}">
+                <i class="fa fa-history" aria-hidden="true"></i>
+                {{#str}}history, local_companycourse{{/str}}
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <h3>{{title}}</h3>
+            <p>{{intro}}</p>
+            {{#counts}}<p><small>{{counts}}</small></p>{{/counts}}
+            <div class="alert alert-info" role="alert">
+                {{#str}}includeusers_warning, local_companycourse{{/str}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{{formhtml}}}
+        </div>
+    </div>
+    {{#summaryhtml}}
+        <div class="row mt-3">
+            <div class="col-12">
+                {{{summaryhtml}}}
+            </div>
+        </div>
+    {{/summaryhtml}}
+</div>

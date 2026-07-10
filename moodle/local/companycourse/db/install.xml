@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/companycourse/db" VERSION="20260709" COMMENT="XMLDB file for Moodle local/companycourse"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_companycourse_log" COMMENT="Log of course replications to IOMAD companies">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="User who ran the replication"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Base course id"/>
+        <FIELD NAME="newcourseid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" COMMENT="Created course id; null on failure"/>
+        <FIELD NAME="companyid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="IOMAD company destination id"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false" COMMENT="success, error or skipped"/>
+        <FIELD NAME="message" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Human-readable result detail"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Unix timestamp of the operation"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="timecreated" UNIQUE="false" FIELDS="timecreated"/>
+        <INDEX NAME="companyid" UNIQUE="false" FIELDS="companyid"/>
+        <INDEX NAME="userid" UNIQUE="false" FIELDS="userid"/>
+        <INDEX NAME="course_company_status" UNIQUE="false" FIELDS="courseid, companyid, status"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>

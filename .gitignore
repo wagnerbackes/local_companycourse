@@ -1,0 +1,12 @@
+.env
+moodle/*
+!moodle/local/
+moodle/local/*
+!moodle/local/companycourse/
+!moodle/local/companycourse/**
+moodledata/
+!moodledata/.gitkeep
+*.log
+.DS_Store
+composer.phar
+phpunit.xml

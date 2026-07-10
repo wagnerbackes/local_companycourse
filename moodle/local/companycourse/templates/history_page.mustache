@@ -1,0 +1,44 @@
+{{!
+    @template local_companycourse/history_page
+
+    IOMAD dashboard shell for replication history (Bootstrap utilities only).
+
+    Context:
+    * title - page title
+    * intro - intro / count text
+    * tablehtml - rendered html_table
+    * isempty - whether there are no rows
+    * emptytext - empty state message
+    * manageurl - link to replication form
+    * dashboardurl - back to IOMAD dashboard
+}}
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12">
+            <a class="btn btn-secondary" href="{{{dashboardurl}}}">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                {{#str}}backtodashboard, local_companycourse{{/str}}
+            </a>
+            <a class="btn btn-link" href="{{{manageurl}}}">
+                <i class="fa fa-copy" aria-hidden="true"></i>
+                {{#str}}manage, local_companycourse{{/str}}
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <h3>{{title}}</h3>
+            {{#intro}}<p>{{intro}}</p>{{/intro}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{#isempty}}
+                <div class="alert alert-info" role="alert">{{emptytext}}</div>
+            {{/isempty}}
+            {{^isempty}}
+                {{{tablehtml}}}
+            {{/isempty}}
+        </div>
+    </div>
+</div>

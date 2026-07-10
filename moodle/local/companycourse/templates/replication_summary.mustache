@@ -1,0 +1,42 @@
+{{!
+    @template local_companycourse/replication_summary
+
+    Summary table after a replication batch (generaltable + Bootstrap alerts).
+}}
+<div>
+    <h3>{{#str}}summaryheading, local_companycourse{{/str}}</h3>
+    <p>{{courselabel}}</p>
+    <p>{{countslabel}}</p>
+    {{#haserror}}
+        <div class="alert alert-danger" role="alert">{{#str}}summaryhaserrors, local_companycourse{{/str}}</div>
+    {{/haserror}}
+    {{#hassuccess}}
+        <div class="alert alert-success" role="alert">{{#str}}summaryhassuccess, local_companycourse{{/str}}</div>
+    {{/hassuccess}}
+    <div class="table-responsive">
+        <table class="generaltable">
+            <thead>
+                <tr>
+                    <th scope="col">{{#str}}company, local_companycourse{{/str}}</th>
+                    <th scope="col">{{#str}}status, local_companycourse{{/str}}</th>
+                    <th scope="col">{{#str}}message, local_companycourse{{/str}}</th>
+                    <th scope="col">{{#str}}newcourseid, local_companycourse{{/str}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#rows}}
+                    <tr class="{{rowclass}}">
+                        <td>{{company}}</td>
+                        <td>{{status}}</td>
+                        <td>{{message}}</td>
+                        <td>
+                            {{#hasnewcourse}}{{newcourseid}}{{/hasnewcourse}}
+                            {{^hasnewcourse}}—{{/hasnewcourse}}
+                        </td>
+                    </tr>
+                {{/rows}}
+            </tbody>
+        </table>
+    </div>
+    <p><a href="{{{historyurl}}}">{{#str}}history, local_companycourse{{/str}}</a></p>
+</div>
