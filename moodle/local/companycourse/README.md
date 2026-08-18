@@ -6,7 +6,7 @@ Plugin local Moodle 5 / IOMAD 5 para replicar um curso base para uma ou mais Com
 |------|--------|
 | Autor | Wagner Dos Santos Backes |
 | E-mail | wagnerbackes@gmail.com |
-| Versão | `2026070974` / release `0.6.2` (`MATURITY_BETA`) |
+| Versão | `2026081807` / release `0.7.0` (`MATURITY_BETA`) |
 | Documentação de entrega | [docs/entrega.md](docs/entrega.md) |
 | Evidências (prints) | [docs/prints/](docs/prints/) |
 

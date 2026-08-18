@@ -7,7 +7,7 @@ Plugin local para Moodle 5 / IOMAD 5 que replica um curso base para uma ou mais 
 | Autor | Wagner Dos Santos Backes |
 | E-mail | wagnerbackes@gmail.com |
 | Componente | `local_companycourse` |
-| Versão | `2026070974` / release `0.6.2` (`MATURITY_BETA`) |
+| Versão | `2026081807` / release `0.7.0` (`MATURITY_BETA`) |
 | Ambiente | Moodle 5.0.8 + IOMAD (`IOMAD_500_STABLE`), PHP 8.3, MariaDB 11.4 |
 | Repositório | https://github.com/wagnerbackes/local_companycourse |
 | Capability | `local/companycourse:manage` |
