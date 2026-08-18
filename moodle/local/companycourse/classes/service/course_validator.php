@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Course validation helpers for replication.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -38,10 +36,8 @@ use local_companycourse\exception\replication_exception;
 class course_validator {
 
     /**
-     * Ensure the base course exists and is usable as backup source.
-     *
-     * @param int $courseid Course id.
-     * @return \stdClass Course record.
+     * @param int $courseid
+     * @return \stdClass
      * @throws replication_exception
      */
     public function require_base_course(int $courseid): \stdClass {
@@ -60,10 +56,6 @@ class course_validator {
     }
 
     /**
-     * Courses available as base (excludes site course), for admin select.
-     *
-     * Labels include the IOMAD company name when the course is linked in company_course.
-     *
      * @return array id => fullname (shortname) (company)
      */
     public function list_base_courses(): array {

@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Replication administration form.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -30,7 +28,7 @@ global $CFG;
 require_once($CFG->libdir . '/formslib.php');
 
 /**
- * Moodle form to select base course, companies and optional user data.
+ * Form to select base course, companies and optional user data.
  *
  * @package    local_companycourse
  * @copyright  2026 Inicie
@@ -39,7 +37,7 @@ require_once($CFG->libdir . '/formslib.php');
 class replicate_form extends \moodleform {
 
     /**
-     * Form definition.
+     * @return void
      */
     public function definition(): void {
         $mform = $this->_form;
@@ -83,10 +81,8 @@ class replicate_form extends \moodleform {
     }
 
     /**
-     * Extra validation.
-     *
-     * @param array $data Submitted data.
-     * @param array $files Submitted files.
+     * @param array $data
+     * @param array $files
      * @return array
      */
     public function validation($data, $files): array {

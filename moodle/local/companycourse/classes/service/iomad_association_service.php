@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * IOMAD company association after course restore.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -37,15 +35,13 @@ use local_companycourse\exception\replication_exception;
  */
 class iomad_association_service {
 
-    /** @var company_repository */
     private company_repository $companies;
 
-    /** @var log_service */
     private log_service $logs;
 
     /**
-     * @param company_repository|null $companies Company access.
-     * @param log_service|null $logs Log access for duplicate checks.
+     * @param company_repository|null $companies
+     * @param log_service|null $logs
      */
     public function __construct(?company_repository $companies = null, ?log_service $logs = null) {
         $this->companies = $companies ?? new company_repository();
@@ -53,10 +49,8 @@ class iomad_association_service {
     }
 
     /**
-     * Resolve destination course category for the company.
-     *
-     * @param int $companyid Company id.
-     * @return int Valid course_categories id.
+     * @param int $companyid
+     * @return int
      * @throws replication_exception
      */
     public function resolve_category_id(int $companyid): int {
@@ -65,8 +59,8 @@ class iomad_association_service {
     }
 
     /**
-     * @param int $courseid Base course id.
-     * @param int $companyid Company id.
+     * @param int $courseid
+     * @param int $companyid
      * @return bool
      */
     public function is_duplicate(int $courseid, int $companyid): bool {
@@ -74,10 +68,8 @@ class iomad_association_service {
     }
 
     /**
-     * Associate restored course to the company via company::add_course().
-     *
-     * @param int $companyid Company id.
-     * @param int $newcourseid Restored course id.
+     * @param int $companyid
+     * @param int $newcourseid
      * @throws replication_exception
      */
     public function associate_course(int $companyid, int $newcourseid): void {
@@ -129,8 +121,8 @@ class iomad_association_service {
     }
 
     /**
-     * @param \company $company Active company.
-     * @return int Valid course_categories id.
+     * @param \company $company
+     * @return int
      */
     private function ensure_course_category(\company $company): int {
         global $DB;

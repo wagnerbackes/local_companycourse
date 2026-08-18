@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy subsystem implementation for local_companycourse.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -48,9 +46,7 @@ class provider implements
     \core_privacy\local\request\plugin\provider {
 
     /**
-     * Describe personal data stored by this plugin.
-     *
-     * @param collection $collection Metadata collection.
+     * @param collection $collection
      * @return collection
      */
     public static function get_metadata(collection $collection): collection {
@@ -72,9 +68,7 @@ class provider implements
     }
 
     /**
-     * List contexts that contain user data.
-     *
-     * @param int $userid User id.
+     * @param int $userid
      * @return contextlist
      */
     public static function get_contexts_for_userid(int $userid): contextlist {
@@ -89,9 +83,7 @@ class provider implements
     }
 
     /**
-     * Export user data for approved contexts.
-     *
-     * @param approved_contextlist $contextlist Approved contexts.
+     * @param approved_contextlist $contextlist
      */
     public static function export_user_data(approved_contextlist $contextlist): void {
         global $DB;
@@ -137,9 +129,7 @@ class provider implements
     }
 
     /**
-     * Delete all data for all users in the context.
-     *
-     * @param \context $context Context.
+     * @param \context $context
      */
     public static function delete_data_for_all_users_in_context(\context $context): void {
         global $DB;
@@ -152,9 +142,7 @@ class provider implements
     }
 
     /**
-     * Delete all user data for the specified user in the approved contexts.
-     *
-     * @param approved_contextlist $contextlist Approved contexts.
+     * @param approved_contextlist $contextlist
      */
     public static function delete_data_for_user(approved_contextlist $contextlist): void {
         global $DB;
@@ -174,9 +162,7 @@ class provider implements
     }
 
     /**
-     * Get users who have data in a context.
-     *
-     * @param userlist $userlist User list.
+     * @param userlist $userlist
      */
     public static function get_users_in_context(userlist $userlist): void {
         $context = $userlist->get_context();
@@ -189,9 +175,7 @@ class provider implements
     }
 
     /**
-     * Delete data for multiple users in a single context.
-     *
-     * @param approved_userlist $userlist Approved users.
+     * @param approved_userlist $userlist
      */
     public static function delete_data_for_users(approved_userlist $userlist): void {
         global $DB;

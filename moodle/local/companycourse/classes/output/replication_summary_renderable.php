@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Renderable for the replication summary.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -41,30 +39,34 @@ use templatable;
  */
 class replication_summary_renderable implements renderable, templatable {
 
-    /** @var replication_summary */
     private replication_summary $summary;
 
-    /** @var array companyid => name */
     private array $companynames;
 
-    /** @var string Base course label. */
     private string $coursename;
 
+    private bool $dashboard;
+
     /**
-     * @param replication_summary $summary Batch summary.
-     * @param string $coursename Course display name.
-     * @param array $companynames Map of company id => name.
+     * @param replication_summary $summary
+     * @param string $coursename
+     * @param array $companynames
+     * @param bool $dashboard
      */
-    public function __construct(replication_summary $summary, string $coursename, array $companynames = []) {
+    public function __construct(
+        replication_summary $summary,
+        string $coursename,
+        array $companynames = [],
+        bool $dashboard = false
+    ) {
         $this->summary = $summary;
         $this->coursename = $coursename;
         $this->companynames = $companynames;
+        $this->dashboard = $dashboard;
     }
 
     /**
-     * Export for template.
-     *
-     * @param renderer_base $output Renderer.
+     * @param renderer_base $output
      * @return \stdClass
      */
     public function export_for_template(renderer_base $output): \stdClass {
@@ -109,7 +111,10 @@ class replication_summary_renderable implements renderable, templatable {
             'rows' => $rows,
             'hassuccess' => $success > 0,
             'haserror' => $error > 0,
-            'historyurl' => (new \moodle_url('/local/companycourse/history.php'))->out(false),
+            'historyurl' => (new \moodle_url(
+                '/local/companycourse/history.php',
+                $this->dashboard ? ['dashboard' => 1] : []
+            ))->out(false),
         ];
     }
 }

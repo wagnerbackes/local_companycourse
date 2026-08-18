@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Domain exception for course replication failures.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,7 +25,7 @@ namespace local_companycourse\exception;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Controlled failure during validation, replication or IOMAD association.
+ * Domain exception for replication failures.
  *
  * @package    local_companycourse
  * @copyright  2026 Inicie
@@ -37,8 +35,8 @@ class replication_exception extends \moodle_exception {
 
     /**
      * @param string $errorcode Lang string identifier in local_companycourse.
-     * @param string|\lang_string|null $a String placeholder data.
-     * @param string|null $debuginfo Optional technical detail for logs.
+     * @param string|\lang_string|null $a
+     * @param string|null $debuginfo
      */
     public function __construct(string $errorcode, $a = null, ?string $debuginfo = null) {
         parent::__construct($errorcode, 'local_companycourse', '', $a, $debuginfo);

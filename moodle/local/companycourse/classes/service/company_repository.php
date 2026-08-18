@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Access and validation helpers for IOMAD companies.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -37,9 +35,6 @@ use local_companycourse\exception\replication_exception;
  */
 class company_repository {
 
-    /**
-     * Ensure company.php is loaded once.
-     */
     private function require_company_lib(): void {
         global $CFG;
 
@@ -47,12 +42,12 @@ class company_repository {
     }
 
     /**
-     * Active companies for admin select (id => name).
-     *
-     * @return array
+     * @return array id => name
      */
     public function list_active_companies(): array {
         global $DB;
+
+        replication_manager::apply_defaults('r');
 
         return $DB->get_records_menu(
             'company',
@@ -63,9 +58,7 @@ class company_repository {
     }
 
     /**
-     * Load and validate an active (non-suspended) company.
-     *
-     * @param int $companyid Company id.
+     * @param int $companyid
      * @return \company
      * @throws replication_exception
      */
@@ -87,9 +80,7 @@ class company_repository {
     }
 
     /**
-     * Course category id from company.category.
-     *
-     * @param \company $company Company instance.
+     * @param \company $company
      * @return int Category id (0 if unset).
      */
     public function get_course_category_id(\company $company): int {

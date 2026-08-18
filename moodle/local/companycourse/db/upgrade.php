@@ -15,18 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Upgrade steps for local_companycourse.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * Upgrade the local_companycourse plugin.
- *
- * @param int $oldversion The version we are upgrading from.
- * @return bool Always true.
+ * @param int $oldversion
+ * @return bool
  */
 function xmldb_local_companycourse_upgrade($oldversion) {
     global $DB;

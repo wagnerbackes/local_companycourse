@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Native Moodle backup/restore course replication.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -37,7 +35,7 @@ require_once($CFG->dirroot . '/backup/util/includes/backup_includes.php');
 require_once($CFG->dirroot . '/backup/util/includes/restore_includes.php');
 
 /**
- * Copies a course via Moodle Backup/Restore API.
+ * Copies a course via Moodle Backup/Restore.
  *
  * @package    local_companycourse
  * @copyright  2026 Inicie
@@ -45,7 +43,6 @@ require_once($CFG->dirroot . '/backup/util/includes/restore_includes.php');
  */
 class course_replication_service {
 
-    /** @var bool */
     private bool $includeusers = false;
 
     /**
@@ -56,8 +53,13 @@ class course_replication_service {
     }
 
     /**
-     * Create a backup package for the base course (reusable for N restores).
-     *
+     * @param bool $includeusers
+     */
+    public function set_includeusers(bool $includeusers): void {
+        $this->includeusers = $includeusers;
+    }
+
+    /**
      * @param int $courseid Base course id.
      * @return string Absolute path to the backup file (.mbz).
      * @throws replication_exception
@@ -117,8 +119,6 @@ class course_replication_service {
     }
 
     /**
-     * Restore a backup package into a new course in the given category.
-     *
      * @param string $backupfile Path returned by {@see create_backup()}.
      * @param int $categoryid Destination course category id.
      * @return int New course id.
@@ -207,7 +207,7 @@ class course_replication_service {
     }
 
     /**
-     * @param backup_controller $bc Backup controller.
+     * @param backup_controller $bc
      */
     private function configure_backup_settings(backup_controller $bc): void {
         $plan = $bc->get_plan();
@@ -237,7 +237,7 @@ class course_replication_service {
     }
 
     /**
-     * @param restore_controller $rc Restore controller.
+     * @param restore_controller $rc
      */
     private function configure_restore_settings(restore_controller $rc): void {
         $plan = $rc->get_plan();
@@ -256,7 +256,7 @@ class course_replication_service {
     }
 
     /**
-     * @param string $prefix Short prefix.
+     * @param string $prefix
      * @return string
      */
     private function unique_shortname(string $prefix): string {

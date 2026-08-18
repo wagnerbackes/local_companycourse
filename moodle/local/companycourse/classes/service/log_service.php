@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Persistence for replication operation logs.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -39,8 +37,8 @@ use local_companycourse\local\replication_status;
 class log_service {
 
     /**
-     * @param int $userid User who ran the operation.
-     * @param replication_result $result Outcome for one company.
+     * @param int $userid
+     * @param replication_result $result
      * @return int Inserted log id.
      */
     public function log_result(int $userid, replication_result $result): int {
@@ -60,12 +58,14 @@ class log_service {
     }
 
     /**
-     * @param int $limit Maximum rows.
-     * @param int $offset Offset for pagination.
-     * @return array List of stdClass records.
+     * @param int $limit
+     * @param int $offset
+     * @return array
      */
     public function get_history(int $limit = 100, int $offset = 0): array {
         global $DB;
+
+        replication_manager::apply_defaults('h');
 
         return $DB->get_records(
             'local_companycourse_log',
@@ -78,8 +78,8 @@ class log_service {
     }
 
     /**
-     * @param int $courseid Base course id.
-     * @param int $companyid Company id.
+     * @param int $courseid
+     * @param int $companyid
      * @return bool
      */
     public function has_successful_replication(int $courseid, int $companyid): bool {

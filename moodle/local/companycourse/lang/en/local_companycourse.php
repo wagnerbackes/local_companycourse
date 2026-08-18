@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Language strings for local_companycourse (English).
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -45,7 +43,7 @@ $string['selectcompanies'] = 'Select one or more companies';
 $string['includeusers'] = 'Include user data';
 $string['includeusers_label'] = 'Also copy enrolments and related user information from the base course';
 $string['includeusers_help'] = 'User data is off by default. Enabling it copies enrolments, role assignments, groups and completion-related information into each company copy. That can duplicate learner records across tenants and is usually unsuitable for a course template. Prefer leaving this disabled unless you intentionally need user data.';
-$string['includeusers_warning'] = 'User data is off by default. Enabling it copies enrolments, role assignments, groups and completion-related information into each company copy. That can duplicate learner records across tenants and is usually unsuitable for a course template. Prefer leaving this disabled unless you intentionally need user data.';
+$string['includeusers_warning'] = 'User data is off by default. Enable only if you need enrolments copied into each company copy.';
 $string['executereplication'] = 'Replicate course';
 $string['backupprogress'] = 'Backing up base course';
 $string['restoreprogress'] = 'Restoring course copy';
@@ -65,7 +63,7 @@ $string['backtodashboard'] = 'Back to IOMAD dashboard';
 $string['error_course_required'] = 'Select a base course.';
 $string['history'] = 'Replication history';
 $string['history_empty'] = 'No replication operations recorded yet.';
-$string['history_count'] = 'Showing the {$a} most recent log entr(y/ies).';
+$string['history_count'] = 'Showing the {$a} most recent log entries.';
 $string['history_user'] = 'User';
 $string['history_timecreated'] = 'Date/time';
 $string['history_missing_user'] = 'User #{$a} (removed)';
@@ -77,8 +75,8 @@ $string['error_company_suspended'] = 'Company "{$a}" is suspended and cannot rec
 $string['error_no_companies'] = 'Select at least one destination company.';
 $string['error_association_failed'] = 'Failed to associate the course with the IOMAD company: {$a}';
 $string['error_move_course_failed'] = 'Could not move restored course {$a} into the company category.';
-$string['error_add_course_failed'] = 'company::add_course() returned failure for course {$a}.';
-$string['error_company_course_missing'] = 'Course {$a} was not linked in company_course after add_course().';
+$string['error_add_course_failed'] = 'Could not associate the restored course {$a} with the company.';
+$string['error_company_course_missing'] = 'The restored course {$a} was not linked to the company.';
 $string['error_backup_failed'] = 'Course backup failed: {$a}';
 $string['error_restore_failed'] = 'Course restore failed: {$a}';
 $string['error_backup_file_missing'] = 'Backup package file is missing or unreadable.';
@@ -88,6 +86,7 @@ $string['error_backup_no_file'] = 'Backup finished without producing a destinati
 $string['error_backup_copy_failed'] = 'Could not copy the backup package to a temporary path.';
 $string['error_restore_extract_failed'] = 'Could not extract the backup package.';
 $string['error_restore_no_course'] = 'Restore finished but the new course was not found.';
+$string['emptyvalue'] = '—';
 $string['restoredcoursefullname'] = 'Restored course';
 $string['error_unexpected'] = 'Unexpected error: {$a}';
 $string['error_log_failed'] = 'The operation result was kept, but writing the audit log failed: {$a}';

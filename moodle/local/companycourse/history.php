@@ -122,7 +122,7 @@ if ($isempty) {
         $courselabel = $coursenames[$courseid]
             ?? get_string('history_missing_course', 'local_companycourse', $courseid);
         $newcourselabel = $newcourseid === null
-            ? '—'
+            ? get_string('emptyvalue', 'local_companycourse')
             : ($coursenames[$newcourseid]
                 ?? get_string('history_missing_course', 'local_companycourse', $newcourseid));
         $companylabel = $companynames[$companyid]

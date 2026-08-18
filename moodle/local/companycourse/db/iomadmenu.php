@@ -15,16 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * IOMAD dashboard menu entries for local_companycourse.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * Register menu items on the IOMAD dashboard (Courses + Reports tabs).
- *
  * @return array
  */
 function local_companycourse_menu() {

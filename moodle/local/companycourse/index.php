@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Course replication administration page (site admin and IOMAD dashboard entry).
+ * Course replication page.
  *
  * @package    local_companycourse
  * @copyright  2026 Inicie
@@ -95,7 +95,7 @@ if ($runreplication && $pendingdata !== null) {
         );
         $coursename = $courses[(int) $pendingdata->courseid]
             ?? (string) $pendingdata->courseid;
-        $renderable = new replication_summary_renderable($summary, $coursename, $companies);
+        $renderable = new replication_summary_renderable($summary, $coursename, $companies, (bool) $dashboard);
         $summaryhtml = $renderer->render($renderable);
     } catch (replication_exception $e) {
         \core\notification::error($e->getMessage());
@@ -116,8 +116,7 @@ if ($dashboard) {
         ]),
         'formhtml' => $formhtml,
         'summaryhtml' => $summaryhtml,
-        'hashistory' => true,
-        'historyurl' => (new moodle_url('/local/companycourse/history.php'))->out(false),
+        'historyurl' => (new moodle_url('/local/companycourse/history.php', $dashboard ? ['dashboard' => 1] : []))->out(false),
         'dashboardurl' => (new moodle_url('/blocks/iomad_company_admin/index.php'))->out(false),
     ]);
 } else {

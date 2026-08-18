@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings de idioma do local_companycourse (português do Brasil).
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -45,7 +43,7 @@ $string['selectcompanies'] = 'Selecione uma ou mais empresas';
 $string['includeusers'] = 'Incluir dados de usuários';
 $string['includeusers_label'] = 'Também copiar matrículas e informações relacionadas de usuários do curso base';
 $string['includeusers_help'] = 'Dados de usuários ficam desativados por padrão. Ativar copia matrículas, papéis, grupos e informações de conclusão para cada cópia da empresa. Isso pode duplicar registros de alunos entre tenants e costuma ser inadequado para um curso modelo. Prefira deixar desativado, salvo se realmente precisar dos dados de usuários.';
-$string['includeusers_warning'] = 'Dados de usuários ficam desativados por padrão. Ativar copia matrículas, papéis, grupos e informações de conclusão para cada cópia da empresa. Isso pode duplicar registros de alunos entre tenants e costuma ser inadequado para um curso modelo. Prefira deixar desativado, salvo se realmente precisar dos dados de usuários.';
+$string['includeusers_warning'] = 'Dados de usuários ficam desativados por padrão. Ative só se precisar copiar matrículas para cada cópia da empresa.';
 $string['executereplication'] = 'Replicar curso';
 $string['backupprogress'] = 'Fazendo backup do curso base';
 $string['restoreprogress'] = 'Restaurando cópia do curso';
@@ -77,8 +75,8 @@ $string['error_company_suspended'] = 'A empresa "{$a}" está suspensa e não pod
 $string['error_no_companies'] = 'Selecione pelo menos uma empresa de destino.';
 $string['error_association_failed'] = 'Falha ao associar o curso à empresa IOMAD: {$a}';
 $string['error_move_course_failed'] = 'Não foi possível mover o curso restaurado {$a} para a categoria da empresa.';
-$string['error_add_course_failed'] = 'company::add_course() retornou falha para o curso {$a}.';
-$string['error_company_course_missing'] = 'O curso {$a} não ficou vinculado em company_course após add_course().';
+$string['error_add_course_failed'] = 'Não foi possível associar o curso restaurado {$a} à empresa.';
+$string['error_company_course_missing'] = 'O curso restaurado {$a} não ficou vinculado à empresa.';
 $string['error_backup_failed'] = 'Falha no backup do curso: {$a}';
 $string['error_restore_failed'] = 'Falha na restauração do curso: {$a}';
 $string['error_backup_file_missing'] = 'Arquivo do pacote de backup ausente ou ilegível.';
@@ -88,6 +86,7 @@ $string['error_backup_no_file'] = 'O backup terminou sem gerar o arquivo de dest
 $string['error_backup_copy_failed'] = 'Não foi possível copiar o pacote de backup para o caminho temporário.';
 $string['error_restore_extract_failed'] = 'Não foi possível extrair o pacote de backup.';
 $string['error_restore_no_course'] = 'A restauração terminou, mas o novo curso não foi encontrado.';
+$string['emptyvalue'] = '—';
 $string['restoredcoursefullname'] = 'Curso restaurado';
 $string['error_unexpected'] = 'Erro inesperado: {$a}';
 $string['error_log_failed'] = 'O resultado da operação foi mantido, mas a gravação do log de auditoria falhou: {$a}';

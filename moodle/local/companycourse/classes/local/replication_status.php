@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Status values stored in local_companycourse_log.status.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -35,12 +33,9 @@ defined('MOODLE_INTERNAL') || die();
  */
 class replication_status {
 
-    /** @var string */
     public const SUCCESS = 'success';
 
-    /** @var string */
     public const ERROR = 'error';
 
-    /** @var string */
     public const SKIPPED = 'skipped';
 }

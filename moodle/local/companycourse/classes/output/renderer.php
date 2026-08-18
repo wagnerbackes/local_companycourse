@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin renderer.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -36,9 +34,7 @@ defined('MOODLE_INTERNAL') || die();
 class renderer extends \plugin_renderer_base {
 
     /**
-     * Render the dashboard shell around the form/summary.
-     *
-     * @param \stdClass $data Template data.
+     * @param \stdClass $data
      * @return string
      */
     public function render_dashboard_page(\stdClass $data): string {
@@ -46,9 +42,7 @@ class renderer extends \plugin_renderer_base {
     }
 
     /**
-     * Render the IOMAD dashboard shell for the history page.
-     *
-     * @param \stdClass $data Template data.
+     * @param \stdClass $data
      * @return string
      */
     public function render_history_page(\stdClass $data): string {
@@ -56,9 +50,7 @@ class renderer extends \plugin_renderer_base {
     }
 
     /**
-     * Render replication summary.
-     *
-     * @param replication_summary_renderable $page Summary renderable.
+     * @param replication_summary_renderable $page
      * @return string
      */
     public function render_replication_summary_renderable(replication_summary_renderable $page): string {

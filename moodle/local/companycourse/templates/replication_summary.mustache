@@ -1,7 +1,5 @@
 {{!
     @template local_companycourse/replication_summary
-
-    Summary table after a replication batch (generaltable + Bootstrap alerts).
 }}
 <div>
     <h3>{{#str}}summaryheading, local_companycourse{{/str}}</h3>
@@ -31,7 +29,7 @@
                         <td>{{message}}</td>
                         <td>
                             {{#hasnewcourse}}{{newcourseid}}{{/hasnewcourse}}
-                            {{^hasnewcourse}}—{{/hasnewcourse}}
+                            {{^hasnewcourse}}{{#str}}emptyvalue, local_companycourse{{/str}}{{/hasnewcourse}}
                         </td>
                     </tr>
                 {{/rows}}

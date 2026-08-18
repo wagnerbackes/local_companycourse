@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Outcome of replicating one base course to one company.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,7 +25,7 @@ namespace local_companycourse\local;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Per-company replication result consumed by UI and log service.
+ * Per-company replication result.
  *
  * @package    local_companycourse
  * @copyright  2026 Inicie
@@ -35,27 +33,22 @@ defined('MOODLE_INTERNAL') || die();
  */
 class replication_result {
 
-    /** @var int */
     public int $companyid;
 
-    /** @var int Base course id. */
     public int $courseid;
 
-    /** @var int|null Created course id when successful. */
     public ?int $newcourseid;
 
-    /** @var string One of {@see replication_status} constants. */
     public string $status;
 
-    /** @var string Human-readable message for UI and log. */
     public string $message;
 
     /**
-     * @param int $companyid Destination company id.
-     * @param int $courseid Base course id.
-     * @param string $status Outcome status.
-     * @param string $message Result message.
-     * @param int|null $newcourseid New course id on success.
+     * @param int $companyid
+     * @param int $courseid
+     * @param string $status
+     * @param string $message
+     * @param int|null $newcourseid
      */
     public function __construct(
         int $companyid,
@@ -72,8 +65,6 @@ class replication_result {
     }
 
     /**
-     * Whether this item completed successfully.
-     *
      * @return bool
      */
     public function is_success(): bool {

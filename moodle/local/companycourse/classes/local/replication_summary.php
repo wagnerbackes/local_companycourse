@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Batch summary for a multi-company replication run.
- *
  * @package    local_companycourse
  * @copyright  2026 Inicie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,7 +25,7 @@ namespace local_companycourse\local;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Aggregates per-company {@see replication_result} items for the admin UI.
+ * Aggregates per-company {@see replication_result} items.
  *
  * @package    local_companycourse
  * @copyright  2026 Inicie
@@ -35,18 +33,16 @@ defined('MOODLE_INTERNAL') || die();
  */
 class replication_summary {
 
-    /** @var int */
     public int $courseid;
 
-    /** @var int */
     public int $userid;
 
     /** @var replication_result[] */
     public array $results = [];
 
     /**
-     * @param int $courseid Base course id.
-     * @param int $userid User who triggered the run.
+     * @param int $courseid
+     * @param int $userid
      */
     public function __construct(int $courseid, int $userid) {
         $this->courseid = $courseid;
@@ -54,18 +50,14 @@ class replication_summary {
     }
 
     /**
-     * Append one company outcome.
-     *
-     * @param replication_result $result Per-company result.
+     * @param replication_result $result
      */
     public function add_result(replication_result $result): void {
         $this->results[] = $result;
     }
 
     /**
-     * Count results with the given status.
-     *
-     * @param string $status Status constant.
+     * @param string $status
      * @return int
      */
     public function count_by_status(string $status): int {

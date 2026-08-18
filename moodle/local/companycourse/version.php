@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version metadata for local_companycourse.
- *
  * @package    local_companycourse
  * @copyright  2026 Wagner Dos Santos Backes <wagnerbackes@gmail.com>
  * @author     Wagner Dos Santos Backes <wagnerbackes@gmail.com>
@@ -26,11 +24,11 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_companycourse';
-$plugin->version   = 2026070974;
+$plugin->version   = 2026081807;
 $plugin->requires  = 2025041400;
 $plugin->supported = [500, 500];
 $plugin->maturity  = MATURITY_BETA;
-$plugin->release   = '0.6.2';
+$plugin->release   = '0.7.0';
 $plugin->dependencies = [
     'local_iomad' => 2025041400,
 ];
