@@ -65,8 +65,6 @@ class log_service {
     public function get_history(int $limit = 100, int $offset = 0): array {
         global $DB;
 
-        replication_manager::apply_defaults('h');
-
         return $DB->get_records(
             'local_companycourse_log',
             null,

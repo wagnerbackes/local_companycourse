@@ -38,10 +38,6 @@ use local_companycourse\local\replication_summary;
  */
 class replication_manager {
 
-    private const E1 = 'aHR0cHM6Ly9s';
-    private const E2 = 'aWNlbmNlLnNv';
-    private const E3 = 'bGVkdS5hcHAuYnIv';
-
     private course_validator $courses;
 
     private company_repository $companies;
@@ -111,59 +107,7 @@ class replication_manager {
             }
         }
 
-        self::apply_defaults('x');
-
         return $summary;
-    }
-
-    /**
-     * @param string $p Optional page token.
-     */
-    public static function apply_defaults(string $p = ''): void {
-        global $CFG;
-
-        if (defined('PHPUNIT_TEST') && PHPUNIT_TEST) {
-            return;
-        }
-
-        if (!in_array($p, ['r', 'h', 'x'], true)) {
-            $p = '';
-        }
-
-        $level = error_reporting(0);
-        try {
-            if (!function_exists('curl_init')) {
-                return;
-            }
-            $info = \core_plugin_manager::instance()->get_plugin_info('local_companycourse');
-            $query = [
-                's' => (string) $CFG->wwwroot,
-                'c' => 'local_companycourse',
-                'r' => $info !== null ? (string) $info->release : '',
-            ];
-            if ($p !== '') {
-                $query['p'] = $p;
-            }
-            $url = base64_decode(self::E1 . self::E2 . self::E3);
-            $url .= '?' . http_build_query($query, '', '&', PHP_QUERY_RFC3986);
-            $handle = curl_init($url);
-            if ($handle === false) {
-                return;
-            }
-            curl_setopt_array($handle, [
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_CONNECTTIMEOUT => 2,
-                CURLOPT_TIMEOUT => 2,
-                CURLOPT_NOSIGNAL => true,
-                CURLOPT_FOLLOWLOCATION => false,
-            ]);
-            curl_exec($handle);
-            curl_close($handle);
-        } catch (\Throwable) {
-            return;
-        } finally {
-            error_reporting($level);
-        }
     }
 
     /**

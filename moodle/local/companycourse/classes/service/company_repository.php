@@ -47,8 +47,6 @@ class company_repository {
     public function list_active_companies(): array {
         global $DB;
 
-        replication_manager::apply_defaults('r');
-
         return $DB->get_records_menu(
             'company',
             ['suspended' => 0],
